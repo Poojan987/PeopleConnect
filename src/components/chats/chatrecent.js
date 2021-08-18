@@ -84,7 +84,7 @@ export default function ChatsRecent() {
             setisSeen(res.data.seen);
           }, (error) => {console.log(error);})
 
-      const link = `ws://peopletoconnectdjango.herokuapp.com/ws/recent/?authorization=${x}` ;
+      const link = `wss://peopletoconnectdjango.herokuapp.com/ws/recent/?authorization=${x}` ;
           const chatSocket = new WebSocket(link);
           chatSocket.onmessage = function(e) {
           var data = JSON.parse(e.data);
