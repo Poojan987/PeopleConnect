@@ -62,7 +62,7 @@ export default function Followers(props){
       }))(Button);
 
     const removeFollower=(id)=>{
-      axios.delete(`http://127.0.0.1:8000/user/followers_followings/${username}`, {
+      axios.delete(`https://peopletoconnectdjango.herokuapp.com/user/followers_followings/${username}`, {
         headers: {
           'Authorization': `token ${x}`,
         },
@@ -79,7 +79,7 @@ export default function Followers(props){
     }
     useEffect(() => {
       
-        axios.get(`http://127.0.0.1:8000/user/followers_followings/${username}`,{
+        axios.get(`https://peopletoconnectdjango.herokuapp.com/user/followers_followings/${username}`,{
             headers: {
                 'Authorization': `token ${x}`,
                 

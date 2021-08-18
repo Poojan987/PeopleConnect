@@ -72,7 +72,7 @@ export default function ChatsRecent() {
   };
 
     useEffect(() => { 
-      axios.get(`http://127.0.0.1:8000/chat/recent/`,{
+      axios.get(`https://peopletoconnectdjango.herokuapp.com/chat/recent/`,{
         headers: { 
             'Authorization': `token ${x}`,
           }
@@ -84,7 +84,7 @@ export default function ChatsRecent() {
             setisSeen(res.data.seen);
           }, (error) => {console.log(error);})
 
-      const link = `ws://127.0.0.1:8000/ws/recent/?authorization=${x}` ;
+      const link = `ws://peopletoconnectdjango.herokuapp.com/ws/recent/?authorization=${x}` ;
           const chatSocket = new WebSocket(link);
           chatSocket.onmessage = function(e) {
           var data = JSON.parse(e.data);
@@ -121,7 +121,7 @@ export default function ChatsRecent() {
     },[])//end useEffect
 
 const Seen =(room_name) =>{
-        axios.post(`http://127.0.0.1:8000/chat/recent/`,
+        axios.post(`https://peopletoconnectdjango.herokuapp.com/chat/recent/`,
         {isSeen,room_name}
     , {
         headers: {

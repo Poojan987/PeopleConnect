@@ -54,7 +54,7 @@ export default function Profile(){
       const classes = useStyles();
       const parameters={
         type: 'profile',
-        url:`http://127.0.0.1:8000/posts/profile_post/${username}`
+        url:`https://peopletoconnectdjango.herokuapp.com/posts/profile_post/${username}`
       }
     return(
         <div style={{marginLeft:100}}>

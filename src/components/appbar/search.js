@@ -61,7 +61,7 @@ export default function Search() {
   function search(value){
     setsearchValue(value)
     if (value.length>0){
-      axios.get(`http://127.0.0.1:8000/user/finduser/?search=${value}`,{
+      axios.get(`https://peopletoconnectdjango.herokuapp.com/user/finduser/?search=${value}`,{
             headers: { 
                 'Authorization': `token ${x}`,
               }

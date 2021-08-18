@@ -36,7 +36,7 @@ export default function Chat(params) {
 
   
     useEffect(() => {
-      axios.get(`http://127.0.0.1:8000/chat/inbox/${id}/`,{
+      axios.get(`https://peopletoconnectdjango.herokuapp.com/chat/inbox/${id}/`,{
             headers: { 
                 'Authorization': `token ${x}`,
               }
@@ -48,7 +48,7 @@ export default function Chat(params) {
 
 
 
-        const link = `ws://127.0.0.1:8000/ws/chat/${id}/?authorization=${x}` ;
+        const link = `ws://peopletoconnectdjango.herokuapp.com/ws/chat/${id}/?authorization=${x}` ;
         const chatSocket = new WebSocket(link);
         chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
@@ -82,7 +82,7 @@ const sendMessage = () => {
     message:message,
     
 };
-  axios.post(`http://127.0.0.1:8000/chat/inbox/${id}/`, body,{
+  axios.post(`https://peopletoconnectdjango.herokuapp.com/chat/inbox/${id}/`, body,{
     
       headers: { 
           'Authorization': `token ${x}`,

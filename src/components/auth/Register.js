@@ -61,7 +61,7 @@ export default function Register() {
   
   function signUp() {
 
-    axios.post('http://127.0.0.1:8000/user/register', {
+    axios.post('https://peopletoconnectdjango.herokuapp.com/user/register', {
         user_name: username,
         email:email,
         // password:'AAA@#123',

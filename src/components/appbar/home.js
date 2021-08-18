@@ -142,7 +142,7 @@ const icons = [
 
 useEffect(() => {
   const x=localStorage.getItem('token');
-  const link = `ws://127.0.0.1:8000/ws/noticount/?authorization=${x}` ;
+  const link = `ws://peopletoconnectdjango.herokuapp.com/ws/noticount/?authorization=${x}` ;
   const chatSocket = new WebSocket(link);
   chatSocket.onmessage = function(e) {
   var data = JSON.parse(e.data);

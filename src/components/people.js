@@ -10,7 +10,7 @@ export default function People(){
     const[suggestedFriends,setsuggestedFriends]=  useState();
     const x=localStorage.getItem('token')
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/user/suggested_friends`,{
+        axios.get(`https://peopletoconnectdjango.herokuapp.com/user/suggested_friends`,{
             headers: {
                 'Authorization': `token ${x}`,
               }}).then((res)=>{

@@ -70,7 +70,7 @@ export default function SpecificPost(){
     const[likedCount,setlikedCount]=useState();
     const likeDislike=()=>{
       if(isLiked==1){
-        axios.delete(`http://127.0.0.1:8000/posts/like_dislike`, {
+        axios.delete(`https://peopletoconnectdjango.herokuapp.com/posts/like_dislike`, {
           headers: {
             'Authorization': `token ${x}`,
           },
@@ -87,7 +87,7 @@ export default function SpecificPost(){
       
       }
       else{
-        axios.post(`http://127.0.0.1:8000/posts/like_dislike`,{post_id:id}, {
+        axios.post(`https://peopletoconnectdjango.herokuapp.com/posts/like_dislike`,{post_id:id}, {
           headers: {
             'Authorization': `token ${x}`,
           },
@@ -103,7 +103,7 @@ export default function SpecificPost(){
       }
     }
     useEffect(() => {
-          axios.get(`http://127.0.0.1:8000/posts/${id}`,{
+          axios.get(`https://peopletoconnectdjango.herokuapp.com/posts/${id}`,{
               headers: {
                   'Authorization': `token ${x}`,
                   
@@ -132,7 +132,7 @@ const sendcomment =() =>{
     body:newcomment,
     post:id,
   }
-  axios.post(`http://127.0.0.1:8000/comments/new`,body, {
+  axios.post(`https://peopletoconnectdjango.herokuapp.com/comments/new`,body, {
         headers: {
           'Authorization': `token ${x}`,
         },

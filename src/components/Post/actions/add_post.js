@@ -74,7 +74,7 @@ export default function AddPost (props){
 		
 		formData.append('Image', PostImage);
         console.log(formData.getAll('Image'));
-        axios.post(`http://127.0.0.1:8000/posts/profile_post/aa`,
+        axios.post(`https://peopletoconnectdjango.herokuapp.com/posts/profile_post/aa`,
             formData
         , {
             headers: {
