@@ -48,7 +48,7 @@ export default function Chat(params) {
 
 
 
-        const link = `ws://peopletoconnectdjango.herokuapp.com/ws/chat/${id}/?authorization=${x}` ;
+        const link = `wss://peopletoconnectdjango.herokuapp.com/ws/chat/${id}/?authorization=${x}` ;
         const chatSocket = new WebSocket(link);
         chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
