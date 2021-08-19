@@ -139,7 +139,7 @@ const Seen =(room_name) =>{
 
 return(
     <div style={{
-      marginLeft: '30%',
+      marginLeft: '15%',
       display:'flex',
       }}>
       
