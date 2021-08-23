@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth:500 ,
     },
     root1: {
-      minWidth: '30vw',
+      minWidth: '20vw',
       maxHeight:'85vh',
       minHeight:'50vh',
       maxWidth:'25vw' ,
