@@ -102,15 +102,17 @@ const MessageChange=(event)=>{
 
 
 return (
-<div className={classes.root}  style={{position:'fixed',border:'ridge',maxHeight:610,maxWidth:900}}>
+<div className={classes.root}  style={{border:'ridge',maxHeight:'85vh',maxWidth:'50vw'}}>
   <NavLink to={`/profile/${params.name}`}  style={{ textDecoration: 'none',cursor:'pointer',color:'black'}}>
       <h2 style={{margin:'5px'}}>{params.name}</h2>
   </NavLink>
   
-  <div className={classes.root} style={{
+  <div style={{
     overflow:'auto',
     marginBottom:'10px',
-    width:'10%',
+    minHeight:'63vh',
+    width:'100%',
+    height:'85%',
     }}>
       
       
@@ -146,7 +148,7 @@ return (
     <div ref={messagesEndRef} />
     
   </div >
-  <Container  maxWidth="xs" style={{position: 'relative',bottom:'25px'}}>
+  <Container  maxWidth="xs" style={{position: 'relative',bottom:'35px'}}>
    <TextField
             variant="outlined"
             margin="normal"

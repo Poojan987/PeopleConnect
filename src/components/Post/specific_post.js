@@ -140,6 +140,7 @@ const sendcomment =() =>{
       }).then((res)=>{
         console.log(res);
         setComments([...Comments,...[res.data]])
+        setNewcomment('')
     },(error)=>{console.log(error.message,error.response)})
 
 }
@@ -148,9 +149,9 @@ const sendcomment =() =>{
           return(
             
               <div  style={{display:'flex'}} >
-              {post&&<Card display='flex' className={classes.Comment} flexGrow={1} style={{marginLeft:80,minWidth: 450,overflow:'auto',
-    minHeight:510,
-    maxWidth:750 ,maxHeight:610,}}>
+              {post&&<Card display='flex' className={classes.Comment} flexGrow={1} style={{marginLeft:'5%',minWidth: 450,overflow:'auto',
+    maxHeight:'85vh',
+    maxWidth:'75vw'}}>
               
                 
 
@@ -174,7 +175,7 @@ const sendcomment =() =>{
               <div className="Post-image">
 {/* HEREEEEEEEEEE */}
               <div>
-                  {post&&< img src={post.Image}style={{ maxHeight:800,maxWidth:500}}/>}
+                  {post&&< img src={post.Image}style={{ width:"100%",height:'100%'}}/>}
               </div>
                   
                   <div className="Post-caption">
@@ -191,15 +192,16 @@ const sendcomment =() =>{
               
 </Card>}
 <div className={classes.Comment2}  style={{ border:'ridge  ',  
-maxHeight:610,
-maxWidth:900,
+maxHeight:'85vh',
+maxWidth:'40vw',
  
 }}>
 <h3 style={{margin:'5px'}}>Comments</h3>  
-<div className={classes.Comment2}  style={{
+<div   style={{
   
   overflow:'auto',
-  // width:'10%',
+  width:'100%',
+  height:'70%',
 }}>
 
   {/* <div className={classes.Comment} style={{
@@ -251,7 +253,7 @@ maxWidth:900,
   
   </div>
   <br/>
-  <Container  maxWidth="xs" style={{position: 'relative',bottom:'25px' }}>
+  <Container  maxWidth="xs" style={{position: 'relative',bottom:'15px' }}>
 <TextField
             variant="outlined"
             margin="normal"

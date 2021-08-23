@@ -28,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth:500 ,
     },
     root1: {
-      minWidth: 250,
-      maxHeight:450,
-      minHeight:450,
-      maxWidth:250 ,
+      minWidth: '20vw',
+      maxHeight:'85vh',
+      minHeight:'50vh',
+      maxWidth:'25vw' ,
       },
     root2:{
       flexGrow: 1,
@@ -139,16 +139,17 @@ const Seen =(room_name) =>{
 
 return(
     <div style={{
-      marginLeft: '30%',
+      marginLeft: '15%',
       display:'flex',
       }}>
       
-      <div className={classes.root1} style={{marginBottom:'15px',border:'ridge',maxHeight:610}}>
+      <div className={classes.root1} style={{border:'ridge'}}>
       <h3 style={{margin:'5px',textAlign:'center'}}>RECENT</h3>
-      <div className={classes.root1} style={{
+      <div style={{
         overflow:'auto',
         marginBottom:'10px',
         width:'100%',
+        height:'85%',
     }}>
       
      
@@ -189,13 +190,14 @@ return(
     </CardContent>
     <div ref={recentEndRef} />
   </div>
-  <Container  maxWidth="xs" style={{position: 'relative',bottom:'5px'}}>
+  <Container  maxWidth="xs" style={{position: 'relative',bottom:10}}>
     <Button 
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             onClick={()=>{setOpen(true)}}
+            style={{marginTop:'4px'}}
     >
     New Chat 
     </Button>
