@@ -110,7 +110,7 @@ return (
   <div style={{
     overflow:'auto',
     marginBottom:'20px',
-    maxHeight:'65vh',
+    height:'60vh',
     width:'100%',
     }}>
       
