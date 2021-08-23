@@ -109,10 +109,9 @@ return (
   
   <div style={{
     overflow:'auto',
-    marginBottom:'10px',
-    minHeight:'63vh',
+    marginBottom:'20px',
+    maxHeight:'65vh',
     width:'100%',
-    height:'85%',
     }}>
       
       
