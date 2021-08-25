@@ -148,7 +148,7 @@ useEffect(() => {
   setusername(data.value.user);
   setprofile(data.value.profile_pic);
   setnotiCount(data.value.count)
-  setmsgCount(data.value.message_count)
+  setmessageCount(data.value.message_count)
   };
   chatSocket.onclose = function(e) {
   console.error('Chat socket closed unexpectedly');
@@ -236,7 +236,7 @@ if (username&&iconnames=='Profile'){
 }
 var badgevalue=0;
 if (idx==2){
-  badgevalue=msgCount
+  badgevalue=messageCount
 }
 else if(idx==3){
   badgevalue=notiCount
