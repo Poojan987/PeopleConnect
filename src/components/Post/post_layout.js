@@ -13,6 +13,7 @@ import AddPost from "./actions/add_post";
 import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Avatar } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -171,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
 
                 <div className="Post-image-bg">
 
-                  <img alt="Icon Living" src={post.Image} />
+                {post.Image && <img alt="Icon Living" src={post.Image} />}
 
                 </div>
 
@@ -195,6 +196,7 @@ const useStyles = makeStyles((theme) => ({
       )})
     
       }
+      <CircularProgress style={{marginLeft:'50%'}}/>
       
       </>
     )
