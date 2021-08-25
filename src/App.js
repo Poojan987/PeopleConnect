@@ -3,6 +3,7 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Logout from './components/auth/Logout';
 import Home from './components/appbar/home';
 import Notification from './components/notification';
 import ChatsRecent from './components/chats/chatrecent';
@@ -23,6 +24,7 @@ export class App2 extends Component{
                     <Route exact path='/' component={Login} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/register' component={Register} />
+                    <Route exact path="/logout" component={ Logout }></Route>
             
              
             
