@@ -86,4 +86,3 @@ class Likes(models.Model):
 
 post_save.connect(Likes.user_liked_post, sender=Likes)
 post_delete.connect(Likes.user_unlike_post, sender=Likes)
-

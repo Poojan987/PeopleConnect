@@ -63,7 +63,19 @@ class RecentChat(models.Model):
 				'value' : json.dumps(data)
 			}
 		)
+        from notifications.models import Notification
+        count=Notification.objects.filter(is_seen=False,user=instance.receiver).count()
+        message_count=RecentChat.objects.filter(receiver=instance.receiver,is_seen=False).count()
+        data={'message_count':message_count,'count':count,'user':instance.receiver.user_name,'profile_pic':instance.receiver.picture}
+        room_name="notif_room_for_user_"+str(instance.receiver.id)
 
+        async_to_sync(channel_layer.group_send)(
+			 room_name,{
+				'type' : 'notification_data',
+				'value' : json.dumps(data)
+			}
+
+		)
 
 
 

@@ -112,4 +112,3 @@ class Follow(models.Model):
 
 post_save.connect(Follow.user_follow, sender=Follow)
 post_delete.connect(Follow.user_unfollow, sender=Follow)
-

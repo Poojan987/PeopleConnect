@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
-
+import json
+import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -11,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&qwqu)ezx88g*tj#)sr(w#z^usi+@6mwtbb@7o$!qg90dwdvtg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -86,6 +87,10 @@ DATABASES = {
     }
 }
 
+db_from_env =dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -124,6 +129,8 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -155,13 +162,20 @@ REST_FRAMEWORK = {
 }
 
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'core\coral-sum-321710-a4637f09d154.json'
-
 
 WSGI_APPLICATION = 'core.wsgi.application'
-ASGI_APPLICATION = "core.asgi.application"
+ASGI_APPLICATION = "core.routing.application"
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
+
+if os.path.isfile('key.json'):
+    pass
+else:
+    MY_ENV_VAR = os.getenv('GOOGLE_CREDENTIALS')
+    with open('key.json', 'w') as filetowrite:
+        filetowrite.write(MY_ENV_VAR)
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.abspath('key.json')
