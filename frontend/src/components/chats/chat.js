@@ -36,7 +36,7 @@ export default function Chat(params) {
 
   
     useEffect(() => {
-      axios.get(`http://127.0.0.1:8000/chat/inbox/${id}/`,{
+      axios.get(`https://peopletoconnectdjango.herokuapp.com/chat/inbox/${id}/`,{
             headers: { 
                 'Authorization': `token ${x}`,
               }
@@ -48,7 +48,7 @@ export default function Chat(params) {
 
 
 
-        const link = `ws://127.0.0.1:8000/ws/chat/${id}/?authorization=${x}` ;
+        const link = `wss://peopletoconnectdjango.herokuapp.com/ws/chat/${id}/?authorization=${x}` ;
         const chatSocket = new WebSocket(link);
         chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
@@ -82,7 +82,7 @@ const sendMessage = () => {
     message:message,
     
 };
-  axios.post(`http://127.0.0.1:8000/chat/inbox/${id}/`, body,{
+  axios.post(`https://peopletoconnectdjango.herokuapp.com/chat/inbox/${id}/`, body,{
     
       headers: { 
           'Authorization': `token ${x}`,
@@ -102,15 +102,16 @@ const MessageChange=(event)=>{
 
 
 return (
-<div className={classes.root}  style={{position:'fixed',border:'ridge',maxHeight:610,maxWidth:900}}>
+<div className={classes.root}  style={{border:'ridge',maxHeight:'85vh',maxWidth:'50vw'}}>
   <NavLink to={`/profile/${params.name}`}  style={{ textDecoration: 'none',cursor:'pointer',color:'black'}}>
       <h2 style={{margin:'5px'}}>{params.name}</h2>
   </NavLink>
   
-  <div className={classes.root} style={{
+  <div style={{
     overflow:'auto',
-    marginBottom:'10px',
-    width:'10%',
+    marginBottom:'20px',
+    height:'60vh',
+    width:'100%',
     }}>
       
       
@@ -146,7 +147,7 @@ return (
     <div ref={messagesEndRef} />
     
   </div >
-  <Container  maxWidth="xs" style={{position: 'relative',bottom:'25px'}}>
+  <Container  maxWidth="xs" style={{position: 'relative',bottom:'35px'}}>
    <TextField
             variant="outlined"
             margin="normal"

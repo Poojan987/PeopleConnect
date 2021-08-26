@@ -61,7 +61,7 @@ export default function Register() {
   
   function signUp() {
 
-    axios.post('http://127.0.0.1:8000/user/register', {
+    axios.post('https://peopletoconnectdjango.herokuapp.com/user/register', {
         user_name: username,
         email:email,
         // password:'AAA@#123',
@@ -73,21 +73,21 @@ export default function Register() {
           window.location.replace('/login')
         }
         else{
-          alert("Username/Email already taken")
+          alert("Invalid Credentials")
         }
         console.log(response);
       }, (error) => {
         if (error.response){
 
-          alert("Username/Email already taken")
+          alert("Invalid Credentials")
           
           }else if(error.request){
           
-            alert("Username/Email already taken")
+            alert("Invalid Credentials")
           
           }else if(error.message){
           
-            alert("Username/Email already taken")
+            alert("Invalid Credentials")
           
           }
       });

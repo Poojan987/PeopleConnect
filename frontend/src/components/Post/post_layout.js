@@ -13,6 +13,7 @@ import AddPost from "./actions/add_post";
 import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Avatar } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     };
     const likeDislike=(id)=>{
       if(isLiked[id]==1){
-        axios.delete(`http://127.0.0.1:8000/posts/like_dislike`, {
+        axios.delete(`https://peopletoconnectdjango.herokuapp.com/posts/like_dislike`, {
           headers: {
             'Authorization': `token ${x}`,
           },
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
       
       }
       else{
-        axios.post(`http://127.0.0.1:8000/posts/like_dislike`,{post_id:id}, {
+        axios.post(`https://peopletoconnectdjango.herokuapp.com/posts/like_dislike`,{post_id:id}, {
           headers: {
             'Authorization': `token ${x}`,
           },
@@ -171,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
 
                 <div className="Post-image-bg">
 
-                  <img alt="Icon Living" src={post.Image} />
+                {post.Image && <img alt="Icon Living" src={post.Image} />}
 
                 </div>
 
@@ -195,6 +196,7 @@ const useStyles = makeStyles((theme) => ({
       )})
     
       }
+      <CircularProgress style={{marginLeft:'50%'}}/>
       
       </>
     )

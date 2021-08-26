@@ -6,7 +6,8 @@ import { blue } from "@material-ui/core/colors";
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import { Button } from "@material-ui/core";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,6 +47,8 @@ export default function AddPost (props){
 
     const[PostImage,setPostImage]=useState(null);
     const[PreviewImage,setPreviewImage]=useState('');
+    const[show,setshow]=useState('none');
+    
     const changeDetail=(event)=>{
         
         if(event.target.name=='Image'){
@@ -64,7 +67,7 @@ export default function AddPost (props){
            }  
     };
     const post=(e)=>{
-        
+        setshow('block');
         e.preventDefault();
 
         let formData = new FormData();
@@ -74,7 +77,7 @@ export default function AddPost (props){
 		
 		formData.append('Image', PostImage);
         console.log(formData.getAll('Image'));
-        axios.post(`http://127.0.0.1:8000/posts/profile_post/aa`,
+        axios.post(`https://peopletoconnectdjango.herokuapp.com/posts/profile_post/aa`,
             formData
         , {
             headers: {
@@ -84,7 +87,6 @@ export default function AddPost (props){
             },
            
           }).then((res)=>{
-            console.log('donzo');
             console.log(res);
             window.location.reload();
 
@@ -92,10 +94,11 @@ export default function AddPost (props){
     }
     return( 
         <>
+        <LinearProgress style={{display:show}}/>
         <Dialog onClose={handleClose}  open={open} style={{minWidth:'400px',minHeight:'40%'}}>
             <DialogTitle >Add Post</DialogTitle>
             
-
+            
             <TextField
                     autoFocus margin="dense" id="title" label="title" type="text" name="title"
                     onChange={changeDetail} value={postData.title}
@@ -113,7 +116,7 @@ export default function AddPost (props){
                 <img src={PreviewImage} style={{maxHeight:500,maxWidth:500}}/>
             </div>
             <div>
-                <Button onClick={post}>Post</Button>
+                <Button onClick={(e)=>{post(e);setshow('block')}}>Post</Button>
             </div>
         </Dialog>
 

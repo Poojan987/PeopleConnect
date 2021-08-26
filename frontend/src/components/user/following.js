@@ -73,7 +73,7 @@ export default function Following(props){
     const username=props.username
 
     const removefollowing=(id)=>{
-        axios.delete(`http://127.0.0.1:8000/user/followers_followings/${username}`, {
+        axios.delete(`https://peopletoconnectdjango.herokuapp.com/user/followers_followings/${username}`, {
           headers: {
             'Authorization': `token ${x}`,
           },
@@ -92,7 +92,7 @@ export default function Following(props){
 
 
     const Follow=(id)=>{
-      axios.post(`http://127.0.0.1:8000/user/followers_followings/${username}`,{following:id}, {
+      axios.post(`https://peopletoconnectdjango.herokuapp.com/user/followers_followings/${username}`,{following:id}, {
         headers: {
           'Authorization': `token ${x}`,
         },
@@ -106,7 +106,7 @@ export default function Following(props){
   }
     useEffect(() => {
       const body={ name:1,};
-        axios.get(`http://127.0.0.1:8000/user/followers_followings/${username}`,{
+        axios.get(`https://peopletoconnectdjango.herokuapp.com/user/followers_followings/${username}`,{
             headers: {
                 'Authorization': `token ${x}`,
                 

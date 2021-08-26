@@ -119,6 +119,7 @@ const onNavigate = (history, locationDescriptor) => history.replace(locationDesc
 const [iconid,setid]=useState();
 const [open, setOpen] = useState(false);
 const [notiCount, setnotiCount] = useState(0);
+const [msgCount, setmsgCount] = useState(0);
 const [messageCount, setmessageCount] = useState(0);
 const [username,setusername]=useState();
 const [profile,setprofile]=useState();
@@ -135,20 +136,19 @@ const icons = [
   MessageIcon,
   NotificationsIcon,
   AccountCircleIcon,
-  SaveIcon,
-  SettingsIcon,
   ExitToAppIcon,
 ];
 
 useEffect(() => {
   const x=localStorage.getItem('token');
-  const link = `ws://127.0.0.1:8000/ws/noticount/?authorization=${x}` ;
+  const link = `wss://peopletoconnectdjango.herokuapp.com/ws/noticount/?authorization=${x}` ;
   const chatSocket = new WebSocket(link);
   chatSocket.onmessage = function(e) {
   var data = JSON.parse(e.data);
   setusername(data.value.user);
   setprofile(data.value.profile_pic);
   setnotiCount(data.value.count)
+  setmessageCount(data.value.message_count)
   };
   chatSocket.onclose = function(e) {
   console.error('Chat socket closed unexpectedly');
@@ -227,13 +227,19 @@ paper: clsx({
 </div>
 <Divider  style={{ marginTop:'7px'}}/>
 <List>
-{['Home','Peoples','Messages','Notifications','Profile','Saved','Settings','Logout',].map((iconnames, idx) => {
+{['Home','Peoples','Messages','Notifications','Profile','Logout',].map((iconnames, idx) => {
 const Icon = icons[idx];
 var url = `/${iconnames.toLowerCase()}`
 
 if (username&&iconnames=='Profile'){
   url=url+'/'+username
-
+}
+var badgevalue=0;
+if (idx==2){
+  badgevalue=messageCount
+}
+else if(idx==3){
+  badgevalue=notiCount
 }
 return (
 <NavLink  to={url} replace="true" activeClassName="active-link" style={{ textDecoration: 'none',cursor:'pointer'}} activeClassName="selected">
@@ -242,7 +248,7 @@ return (
 <Tooltip title={<h3>{iconnames}</h3>}  placement="right">
   <ListItem key={iconnames}>
     <ListItemIcon>
-      {idx<4? <Badge badgeContent={idx===3?notiCount:0} color="secondary">
+      {idx<4? <Badge badgeContent={badgevalue} color="secondary">
         <Icon style={{color:iconid===idx?'blue':'#6b6b6b'}} />
       </Badge>: <Icon style={{color:iconid===idx?'blue':'#6b6b6b'}} />}
       <ListItemText primary={iconnames} style={{marginLeft:'35px' , color:iconid===idx?'blue':'#6b6b6b' }}/>

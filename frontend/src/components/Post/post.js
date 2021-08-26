@@ -7,7 +7,7 @@ import AddPost from "./actions/add_post";
 export default function Post()  {
   const parameters={
               type: 'all',
-              url:`http://127.0.0.1:8000/posts/profile_post/ `
+              url:`https://peopletoconnectdjango.herokuapp.com/posts/profile_post/ `
             }
   const [OpenAddPost,setOpenAddPost]=useState(false);
   const handleCloseAddPost = () => {

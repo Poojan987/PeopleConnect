@@ -8,7 +8,7 @@ export default function Notification(){
 
     useEffect(() => {
         setTimeout(() => {
-            axios.get(`http://127.0.0.1:8000/notifications/`, {
+            axios.get(`https://peopletoconnectdjango.herokuapp.com/notifications/`, {
                 headers: {
                     'Authorization': `token ${x}`,
                 }

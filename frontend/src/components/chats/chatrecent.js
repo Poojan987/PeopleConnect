@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
     },
     root1: {
       minWidth: 250,
-      maxHeight:450,
-      minHeight:450,
-      maxWidth:250 ,
+      maxHeight:'85vh',
+      minHeight:'50vh',
+      maxWidth:'25vw' ,
       },
     root2:{
       flexGrow: 1,
@@ -72,7 +72,7 @@ export default function ChatsRecent() {
   };
 
     useEffect(() => { 
-      axios.get(`http://127.0.0.1:8000/chat/recent/`,{
+      axios.get(`https://peopletoconnectdjango.herokuapp.com/chat/recent/`,{
         headers: { 
             'Authorization': `token ${x}`,
           }
@@ -84,7 +84,7 @@ export default function ChatsRecent() {
             setisSeen(res.data.seen);
           }, (error) => {console.log(error);})
 
-      const link = `ws://127.0.0.1:8000/ws/recent/?authorization=${x}` ;
+      const link = `wss://peopletoconnectdjango.herokuapp.com/ws/recent/?authorization=${x}` ;
           const chatSocket = new WebSocket(link);
           chatSocket.onmessage = function(e) {
           var data = JSON.parse(e.data);
@@ -121,7 +121,7 @@ export default function ChatsRecent() {
     },[])//end useEffect
 
 const Seen =(room_name) =>{
-        axios.post(`http://127.0.0.1:8000/chat/recent/`,
+        axios.post(`https://peopletoconnectdjango.herokuapp.com/chat/recent/`,
         {isSeen,room_name}
     , {
         headers: {
@@ -139,16 +139,17 @@ const Seen =(room_name) =>{
 
 return(
     <div style={{
-      marginLeft: '30%',
+      marginLeft: '15%',
       display:'flex',
       }}>
       
-      <div className={classes.root1} style={{marginBottom:'15px',border:'ridge',maxHeight:610}}>
+      <div className={classes.root1} style={{border:'ridge'}}>
       <h3 style={{margin:'5px',textAlign:'center'}}>RECENT</h3>
-      <div className={classes.root1} style={{
+      <div style={{
         overflow:'auto',
         marginBottom:'10px',
         width:'100%',
+        height:'85%',
     }}>
       
      
@@ -189,13 +190,14 @@ return(
     </CardContent>
     <div ref={recentEndRef} />
   </div>
-  <Container  maxWidth="xs" style={{position: 'relative',bottom:'5px'}}>
+  <Container  maxWidth="xs" style={{position: 'relative',bottom:10}}>
     <Button 
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             onClick={()=>{setOpen(true)}}
+            style={{marginTop:'4px'}}
     >
     New Chat 
     </Button>
